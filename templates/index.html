@@ -7,8 +7,20 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+    <header>
     <h1>CyLens</h1>
     <p>Cyber Threat Intelligence and Visualisation Platform</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Latest Threats</h2>
+
+            <div id="threat-container">
+                <p>Loading threats...</p>
+            </div> 
+        </section>
+    </main>
 
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
