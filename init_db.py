@@ -25,6 +25,20 @@ def initialize_database():
         """
     )
 
+    cursor.execute (
+        """
+        CREATE TABLE IF NOT EXISTS threat_history (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            threat_id INTEGER NOT NULL,
+            timestamp TEXT NOT NULL,
+            confidence_score INTEGER,
+            severity TEXT,
+            description TEXT,
+            FOREIGN KEY (threat_id) REFERENCES threats (id)
+            )
+            """
+    )
+
     connection.commit()
     connection.close()
 

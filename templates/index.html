@@ -3,26 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>CyLens</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+    <link 
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-    <header>
-    <h1>CyLens</h1>
-    <p>Cyber Threat Intelligence and Visualisation Platform</p>
+
+    <header class="topbar">
+        <div>
+            <h1>CyLens</h1>
+            <p>Cyber Threat Intelligence and Visualisation Platform</p>
+        </div>
+
+        <div class="system-status">
+            <span class="status-indicator"></span>
+            System Online
+        </div>
     </header>
 
-    <main>
-        <section>
-            <h2>Latest Threats</h2>
 
-            <div id="threat-container">
-                <p>Loading threats...</p>
-            </div> 
+    <main class="dashboard">
+
+        <section class="statistics">
+
+            <div class="stat-card">
+                <h3>Total Threats</h3>
+                <p id="total-threats">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>High Risk</h3>
+                <p id="high-risk-threats">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Countries</h3>
+                <p id="countries-count">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Data Sources</h3>
+                <p id="sources-count">0</p>
+            </div>
+
         </section>
+
+
+        <section class="dashboard-content">
+
+            <div class="visualisation-panel">
+
+                <div class="panel-header">
+                    <h2>Threat Visualisation</h2>
+                </div>
+
+                <div id="threat-map"></div>
+
+            </div>
+
+
+            <div class="threats-panel">
+
+                <div class="panel-header">
+                    <h2>Latest Threats</h2>
+                </div>
+
+                <div id="threat-container">
+                    <p>Loading threats...</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="analytics-section">
+
+            <div class="panel-header">
+                <h2>Threat Intelligence Analytics</h2>
+                <p>Overview of collected threat intelligence</p>
+            </div>
+
+            <div class="analytics-grid">
+
+                <div class="analytics-card">
+                    <h3>Threat Severity Distribution</h3>
+                    <canvas id="severity-chart"></canvas>
+                </div>
+
+                <div class="analytics-card">
+                    <h3>Threat Distribution by Country</h3>
+                    <canvas id="country-chart"></canvas>
+                </div>
+
+            </div>
+
+        </section>
+
     </main>
 
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
 </body>
 </html>

@@ -2,3 +2,11 @@ venv/
 __pycache__/
 *.pyc
 .env
+# SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Database and project backups
+data/backups/
+backups/
